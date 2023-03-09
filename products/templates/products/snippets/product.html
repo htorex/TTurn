@@ -1,0 +1,11 @@
+<!-- horarios -->
+<div class="card h-100">
+    {% if product.image %}
+      <img src="{{ product.image.url }}" alt="imagen del producto">
+    {%endif%}
+    <div class="card-body">
+      <h5 class="card-dia">{{ product.dia}}</h5>
+      <p class="cart-horario">{{ product.horarios }}</p>
+      <a href="#" class="btn btn-primary">Seleccionar</a>
+    </div>
+  </div>

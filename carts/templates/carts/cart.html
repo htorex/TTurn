@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if cart.product.exists %}
+
+<div class="col-8">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">cantidad</th>
+                <th scope="col">precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in cart.products %}
+                <tr>
+                    <th> {{ forloop.counter }} </th>
+                    <th> 
+                        {% if product.image %} 
+                            <img src="{{ product.image.url }}" alt="imagen del producto" width="60" height="60">
+                        {% endif %}
+                    </th>
+                    <th>
+                        <a href="{% url 'products:product' product.slug %}">{{ product.dia }}</a>
+                    </th>
+                    <th>1</th>
+                    <th>
+                        <span class="font-weight-bold text-danger"> {{ product.horario }} </span>
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="col">
+
+</div>
+
+{% else %}
+    <div class="col">
+        <p class="h3"> No tienes Horarios Elegidos</p>
+        <a href=" {% url 'index' %} ">Elegir turnos</a>
+    </div>
+
+{% endif %}
+
+{% endblock %}
